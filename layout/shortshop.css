@@ -1,0 +1,46 @@
+/*Szöveg színezés*/
+*{
+    color: white;
+}
+.card p,.card{
+    color: black;
+}
+select option{
+    color: black;
+}
+.form-text,h1{
+    color: white;
+}
+/*Háttérkép*/
+body{
+    background-image: url("../imgs/logo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    /*background-size: contain;*/
+    background-size: auto 100%;
+    
+}
+/*Nav menü*/
+.navbar-nav .nav-link.active {
+    background-color: black;
+    color: yellow;
+}
+*:required {
+    background-color: #fff3cd;
+}
+*:required:after {
+    content:" *";
+    color: red;
+}
+.card-img, .card-img-top {
+    max-height: 150px;
+    width: auto;
+    
+}
+.card{
+    margin: 30px;
+}
+.rolunkcontainer{
+    text-align: center;
+}
