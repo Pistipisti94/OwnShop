@@ -92,8 +92,12 @@ if (filter_input(INPUT_POST, "Torles", FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAIL
         </div>
 
     </div>
-
-    <button type="submit" class="btn btn-success" value="1" name="Adatmodositas">Módosítás</button>
-    <a href="index.php?menu=orokbefogadasUser&termekid=<?php echo $adatok['termekid']; ?>" class="btn btn-primary">Megrendelem</a>
-    <button type="submit" class="btn btn-danger" value="1" name="Torles">Törlés</button>
+<?php
+        if ($_SESSION['login']) {
+        echo '<button type="submit" class="btn btn-success" value="1" name="Adatmodositas">Módosítás</button>';
+        echo '<a href="index.php?menu=orokbefogadasUser&termekid=<?= echo '.$adatok['termekid'].'; ?>"class="btn btn-primary">Megrendelem</a>';
+        echo '<button type="submit" class="btn btn-danger" value="1" name="Torles">Törlés</button>';
+    }
+    
+        ?>
 </form>
