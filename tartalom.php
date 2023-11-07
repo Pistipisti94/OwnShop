@@ -1,8 +1,8 @@
 <?php
 
 switch ($menu) {
-    case 'orokbefogadasUser':
-        require_once './pages/orokbefogadasUser.php';
+    case 'megrendeles':
+        require_once './pages/megrendeles.php';
         break;
     case 'logout':
         require_once './pages/logout.php';

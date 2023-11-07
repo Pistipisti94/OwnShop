@@ -5,6 +5,9 @@
 .card p,.card{
     color: black;
 }
+p{
+    color: white;
+}
 select option{
     color: black;
 }

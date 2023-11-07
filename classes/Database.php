@@ -41,10 +41,10 @@ class Database {
         return false;
     }
 
-    public function register($username,$password,$emailcim,$teljes_nev,$igazolvanyszam) {
+    public function register($username, $password, $emailcim, $teljes_nev, $igazolvanyszam) {
         //$password = password_hash($pass, PASSWORD_ARGON2I);
         $stmt = $this->db->prepare("INSERT INTO `users` (`userid`, `username`, `password`, `email`, `teljesnev`, `igazolvanyszam`) VALUES (NULL,?,?,?,?,?)");
-        $stmt->bind_param("sssss", $username,$password,$emailcim,$teljes_nev,$igazolvanyszam);
+        $stmt->bind_param("sssss", $username, $password, $emailcim, $teljes_nev, $igazolvanyszam);
         try {
             if ($stmt->execute()) {
                 //echo $stmt->affected_rows();
@@ -68,10 +68,10 @@ class Database {
         $result = $this->db->query("SELECT * FROM `termekek` WHERE termekid=" . $id);
         return $result->fetch_assoc();
     }
-    
-    public function setKivalasztottTermek($termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes,$termekid) {
+
+    public function setKivalasztottTermek($termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes, $termekid) {
         $stmt = $this->db->prepare("UPDATE `termekek` SET `termekfajta`= ?,`marka`= ?,`tipus`= ?,`megjelenes`= ?,`beerkezes`= ?,`megjegyzes`= ? WHERE termekid= ?");
-        $stmt->bind_param('ssssssi', $termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes,$termekid);
+        $stmt->bind_param('ssssssi', $termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes, $termekid);
         return $stmt->execute();
     }
 
@@ -89,35 +89,42 @@ class Database {
         $stmt = $this->db->prepare("INSERT INTO `rendeles` (`termekid`, `userid`) VALUES (?,? );");
         $stmt->bind_param("ii", $termekid, $userid);
         return $stmt->execute();
-        
     }
+
     public function setFeltoltes($termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes) {
         $stmt = $this->db->prepare("Insert into `termekek`(`termekfajta`, `marka`, `tipus`, `megjelenes`, `beerkezes`, `megjegyzes`) VALUES (?, ?, ?, ?, ?, ?);");
         $stmt->bind_param('ssssss', $termekfajta, $marka, $tipus, $megjelenes, $beerkezes, $megjegyzes);
         $request = $stmt->execute();
-        if($request){
+        if ($request) {
             return true;
         } else {
             return false;
-        } 
+        }
     }
-        public function getFeltoltes($id) {
+
+    public function getFeltoltes($id) {
         $result = $this->db->query("SELECT * FROM `termekek` WHERE termekid=" . $id);
         return $result->fetch_assoc();
     }
-    
-        public function setTermekTorles($termekid) {
+
+    public function setTermekTorles($termekid) {
         $stmt = $this->db->prepare("DELETE FROM `termekek` WHERE `termekek`.`termekid` = ?;");
         $stmt->bind_param('i', $termekid);
         $request = $stmt->execute();
-        if($request){
+        if ($request) {
             return true;
         } else {
             return false;
-        } 
+        }
     }
-        public function getTermekTorles($id) {
+
+    public function getTermekTorles($id) {
         $result = $this->db->query("SELECT * FROM `termekek` WHERE termekid=" . $id);
+        return $result->fetch_assoc();
+    }
+
+    public function rendelesAlatt($id) {
+        $result = $this->db->query("SELECT * FROM termekek NATURAL JOIN rendeles WHERE termekek.termekid = " . $id);
         return $result->fetch_assoc();
     }
 }
