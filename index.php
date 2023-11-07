@@ -11,8 +11,33 @@ require_once './layout/head.php';
 $menu = filter_input(INPUT_GET, "menu");
 ?>
 <body>
+
     <?php
     require_once './layout/menu.php';
+    ?>
+    <!--
+        <ul>
+        <li style="--i:6;" data-icon="&#xf015">
+            <a href="./pages/home.php">Home</a>
+        </li>
+        <li style="--i:5;" data-icon="&#xf2bb">
+            <a href="#">About</a>
+        </li>
+        <li style="--i:4;" data-icon="&#xf03a">
+            <a href="#">Service</a>
+        </li>
+        <li style="--i:3;" data-icon="&#xf07c">
+            <a href="#">Portfolio</a>
+        </li>
+        <li style="--i:2;" data-icon="&#xe533">
+            <a href="#">Our Team</a>
+        </li>
+        <li style="--i:1;" data-icon="&#x40">
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+    -->
+    <?php
     require_once './tartalom.php';
     require_once './layout/footer.php';
     ?>
