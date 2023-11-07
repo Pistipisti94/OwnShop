@@ -40,6 +40,8 @@ body{
 }
 .card{
     margin: 30px;
+    opacity: 90%;
+    background-color: gray;
 }
 .rolunkcontainer{
     text-align: center;

@@ -29,5 +29,6 @@ if (filter_input(INPUT_POST,
 
         <button type="submit" class="btn btn-primary" name="belepesiAdatok" value="true">Belépés</button>
     </form>
-    <a href="index.php?menu=regisztracio">Regisztráció</a>
+    <br>
+    <a href="index.php?menu=regisztracio" class="btn btn-primary">Regisztráció</a>
 </div>
